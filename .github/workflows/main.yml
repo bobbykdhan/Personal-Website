@@ -11,7 +11,8 @@ jobs:
         with:
           root_file: |
             ./Source_Code/main.tex
-            ./Source_Code/altacv.cls
+        env:
+          TEXINPUTS: ".:./Source_Code//:"
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
