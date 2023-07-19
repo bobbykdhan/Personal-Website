@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import flask
 from flask import Flask
 
