@@ -22,6 +22,6 @@ jobs:
         with:
           image: flasktest:latest
           run: |
-            ./app.py &
+            chmod +x app.py && ./app.py &
             wget 0.0.0.0:8080 --output-document b.pdf
 
