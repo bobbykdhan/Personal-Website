@@ -21,4 +21,5 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: flasktest:latest
-          run: ls -la    
+          run: wget 0.0.0.0:8080 --output-document b.pdf
+
