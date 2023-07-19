@@ -9,7 +9,9 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: ./Source_Code/main.tex
+          root_file: |
+            ./Source_Code/main.tex
+            ./Source_Code/altacv.cls
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
