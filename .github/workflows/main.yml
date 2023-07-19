@@ -13,6 +13,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
+          continue_on_error: true
           root_file: |
             ./Source_Code/main.tex
         env:
