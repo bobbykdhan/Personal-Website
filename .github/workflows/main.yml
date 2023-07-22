@@ -5,21 +5,15 @@ on:
       - Source_Code/**
   workflow_dispatch:
 jobs:
-  build_latex:
+  latex-job:
     runs-on: ubuntu-latest
+    name: A job to Compile Latex file
     steps:
-      - name: Set up Git repository
-        uses: actions/checkout@v3
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          continue_on_error: true
-          root_file: |
-            ./Source_Code/main.tex
-        env:
-          TEXINPUTS: ".:./Source_Code//:"
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v3
-        with:
-          name: PDF
-          path: Bobby_Dhanoolal_Resume.pdf
+    - uses: actions/checkout@v1
+    - name: Compilation
+      uses: vinay0410/tectonic-action@master
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tex_path: 'Source_Code/file.tex'
+        push: 'yes'
