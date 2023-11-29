@@ -1,0 +1,379 @@
+
+%% If you need to pass whatever options to xcolor
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+% Change the page layout if you need to
+\geometry{left=1.2cm,right=1.2cm,top=1cm,bottom=.25cm,columnsep=0.75cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% ----- LIGHT MODE -----
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{PrimaryColor}{HTML}{05827c}
+\definecolor{SecondaryColor}{HTML}{050782}
+\definecolor{ThirdColor}{HTML}{b02e07}
+\definecolor{BackgroundColor}{HTML}{E2E2E2}
+\colorlet{name}{PrimaryColor}
+\colorlet{tagline}{PrimaryColor}
+\colorlet{heading}{PrimaryColor}
+\colorlet{headingrule}{ThirdColor}
+\colorlet{subheading}{SecondaryColor}
+\colorlet{accent}{SecondaryColor}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+%\pagecolor{BackgroundColor}   
+% ----- DARK MODE -----
+%\definecolor{BackgroundColor}{HTML}{242424}
+%\definecolor{SlateGrey}{HTML}{6F6F6F}
+%\definecolor{LightGrey}{HTML}{ABABAB}
+%\definecolor{PrimaryColor}{HTML}{3F7FFF}
+%\colorlet{name}{PrimaryColor}
+%\colorlet{tagline}{PrimaryColor}
+%\colorlet{heading}{PrimaryColor}
+%\colorlet{headingrule}{PrimaryColor}
+%\colorlet{subheading}{PrimaryColor}
+%\colorlet{accent}{PrimaryColor}
+%\colorlet{emphasis}{LightGrey}
+%\colorlet{body}{LightGrey}
+%\pagecolor{BackgroundColor}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\Large\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\small\bfseries}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+%% sample.bib contains your publications
+%% \addbibresource{sample.bib}
+
+\begin{document}
+
+    \columnratio{0.6}
+    
+    \name{Bobby Dhanoolal}
+    \personalinfo{
+        \newline
+        \github{Bobbykdhan}
+        \newline
+        \phone{(914)-409-7471}
+        \newline
+        \linkedin{bobby-dhanoolal}
+        \newline
+        \email{bobbydhanoolal@mail.rit.edu}
+    }
+    
+    %% \tagline{Test Developer}
+    %% You can add multiple photos on the left or right
+    
+    \makecvheader
+    %% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+    % \AtBeginEnvironment{itemize}{\small}
+    \AtBeginEnvironment{itemize}{\small}
+    
+    %% Set the left/right column width ratio to 6:4.
+
+    % Start a 2-column paracol. Both the left and right columns will automatically
+    % break across pages if things get too long.
+    % \begin{paracol}{2}
+    %     % ----- STRENGTHS -----
+    %     \cvsection{Languages}
+    %         \cvtag{Kotlin}
+    %         \cvtag{Python}
+    %         \cvtag{Rust}
+    %         \cvtag{Java}
+    %         \cvtag{SQL}
+    %     % ----- STRENGTHS -----
+        
+    %     \bigskip \bigskip \bigskip
+        
+    %     % ----- LEARNING -----
+    %     \cvsection{Libraries}
+    %         \cvtag{React.js}
+    %         \cvtag{React Native}
+    %         \cvtag{Pandas}
+    %         \cvtag{Rocket.rs}
+    %         \newline
+    %         \cvtag{Tensorflow}
+    %         \cvtag{Android Room}
+    %         \cvtag{Django}
+    %         \cvtag{Jetpack Compose}
+    %         \cvtag{Dagger}
+    %         \cvtag{Hilt}
+    %     % ----- LEARNING -----
+        
+    %     \bigskip \bigskip \bigskip
+        
+    %     % ----- LANGUAGES -----
+    %     \cvsection{Technologies}
+    %         \cvtag{Linux}
+    %         \cvtag{Git}
+    %         \cvtag{Vim}
+    %         \newline
+    %         \cvtag{Functional Programming}
+    %         \newline
+    %         \cvtag{WebSockets}
+    %         \newline
+    %     % ----- LANGUAGES -----
+        
+    %     \bigskip \bigskip \bigskip
+        
+    %     % ----- EXTRACURRICULARS -----
+    %     \cvsection{\fontsize{12}{14}\selectfont Extracurriculars}
+    %         \cvtag{Computer Science House}
+    %         \cvtag{Git}
+    %         \cvtag{Vim}
+    %         \newline
+    %         \cvtag{Functional Programming}
+    %         \newline
+    %         \cvtag{WebSockets}
+    %         \newline
+    %         \cvtag{Object-Oriented Programming}
+    %     % ----- EXTRACURRICULARS -----
+        
+    %     % ----- MOST PROUD -----
+    %     % \cvsection{Most Proud of}
+        
+    %     % \cvachievement{\faTrophy}{Fantastic Achievement}{and some details about it}\\
+    %     % \divider
+    %     % \cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}\\
+    %     % \divider
+    %     % \cvachievement{\faHeartbeat}{Another achievement}{more details about it of course}
+    %     % ----- MOST PROUD -----
+        
+    %     % \cvsection{A Day of My Life}
+        
+    %     % Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+    %     % \wheelchart{outer radius}{inner radius}{
+    %     % comma-separated list of value/text width/color/detail}
+    %     % \wheelchart{1.5cm}{0.5cm}{%
+    %     %   6/8em/accent!30/{Sleep,\\beautiful sleep},
+    %     %   3/8em/accent!40/Hopeful novelist by night,
+    %     %   8/8em/accent!60/Daytime job,
+    %     %   2/10em/accent/Sports and relaxation,
+    %     %   5/6em/accent!20/Spending time with family
+    %     % }
+        
+    %     % use ONLY \newpage if you want to force a page break for
+    %     % ONLY the current column
+    %     \newpage
+        
+    %     %% Switch to the right column. This will now automatically move to the second
+    %     %% page if the content is too long.
+    %     \switchcolumn
+    
+    
+
+    
+    % ----- EDUCATION -----
+    \begin{paracol}{2}
+    
+    \cvsection{Education}
+        \cvevent{BS Computer Science}{|\cvrepo{Rochester Institute of Technology}{https://www.rit.edu/}}{2021-2026}{}
+    \cvtag{Concepts of Computing Systems} 
+    \cvtag{Mechanics of Programming}
+    \cvtag{Intro to AI}
+    \cvtag{Analysis of Algorithms}
+    \cvtag{Intro to Software Engineering}
+    \cvtag{CS Theory} 
+
+    % ----- EDUCATION -----
+        
+    % ----- EXPERIENCE -----
+    
+    \cvsection{Experience}
+    
+    \cvevent{Software Engineering Co Op}{|\cvrepo{Codonics}{https://www.codonics.com/}}{May 2023 - Present}{}
+\begin{itemize}
+\item Investigated and repaired issues regarding Safe Label System and its Administration Tool.
+\item Coordinated with team members to execute a comprehensive testing workflow aimed at preventing the inclusion of any bugs in production builds.
+\item Implemented WiFi 6 technology, resulting in substantial improvements in connectivity speeds and reliability. Proactively managed and maintained drivers across diverse adapters to optimize overall network performance.
+\end{itemize}
+    \smallskip \smallskip
+    \newline
+    \cvtag{Java} 
+    \cvtag{Bash}
+    \cvtag{Linux} 
+    \cvtag{Groovy}
+    \cvtag{C}
+    \cvtag{JavaScript}
+    \cvtag{HTML}
+        \cvtag{Spring}
+    \newline
+    
+    \divider
+    
+    \cvevent{Web \& Email Technologist}{|\cvrepo{RIT Univ. Advancement}{https://www.rit.edu}}{Jan - Dec 2022}{}
+
+\begin{itemize}
+\item Performed created websites and updated content to the Alumni and Giving websites using Drupal. 
+\item Used Airtable and Blackbaud to collaborate with other team members to create and process communication emails and email lists. 
+    \end{itemize}
+    
+\smallskip \smallskip
+    \newline
+    \cvtag{Drupal} \cvtag{HTML} \cvtag{CSS} 			\cvtag{Blackbaud} \cvtag{Airtable}
+    \newline
+    \divider
+    \cvevent{Software Engineering Intern }{|\cvrepo{IBM}{https://www.ibm.com/}}{Jun - Aug 2022}{}
+\begin{itemize}
+\item Built REST services for a back end project using express
+\item Built a front-end application in react utilizing back end services
+\item Developed unit tests for project code for front end and back end services
+\item Built front end web application leveraging HTML, CSS, React and material UI
+\end{itemize}
+    \smallskip 
+    \cvtag{ React} \cvtag{HTML} \cvtag{CSS} \cvtag{ Javascript} \cvtag{Express}
+    \newline
+    
+
+
+
+    
+    % ----- EXPERIENCE -----
+    
+    \switchcolumn
+    
+    \cvsection{Languages}
+    \cvtag{ Java} \cvtag{ Python} \cvtag{ JavaScript} \cvtag{Swift} \cvtag{CSS} \cvtag{Apple Script} \cvtag{Bash}  \cvtag{C} \cvtag{LaTeX} \cvtag{MySQL} \cvtag{Assembly} \cvtag{MIPS}  \cvtag{HTML} 
+    
+
+    \smallskip
+    
+    \cvsection{Frameworks}
+    \cvtag{ React} \cvtag{Drupal}\cvtag{Selenium}
+    \newline
+     \cvtag{ React Native} \cvtag{Playwright}
+    % LOOK FOR THE ICONS
+    
+    \smallskip
+    
+    \cvsection{Libraries}
+     \cvtag{ Pandas} \cvtag{ Numpy}  \cvtag{ Express}  \newline \cvtag{ Tensorflow}
+      
+    \bigskip
+    \smallskip
+    
+    
+    \cvsection{Technologies}
+     \cvtag{ Square} \cvtag{Stripe}
+      \cvtag{Unreal Engine}
+    \cvtag{Unity Engine}
+    \cvtag{Web Automation}
+     \cvtag{Docker}
+     \cvtag{OpenShift}
+    
+    \switchcolumn
+
+    % ----- PROJECTS -----
+    \cvsection{Projects}
+
+       \cvevent{LINT }{\cvrepo{| \faGithub Bobbykdhan/LINT}{https://github.com/Bobbykdhan/LINT} }{}{}
+    \begin{itemize}
+\item Developed a user friendly reporting system utilized for maintenance issues for RIT residence. 
+\end{itemize}
+\smallskip \smallskip
+  \cvtag{ Flask} \cvtag{Python} \cvtag{HTML} \cvtag{OpenShift} \cvtag{Docker}  \cvtag{Selenium}
+
+\newline
+    \divider
+
+      \cvevent{AutoOrder-API}{\cvrepo{|\faGithub  Bobbykdhan/AutoOrder-API}{https://github.com/Bobbykdhan/AutoOrder-API} }{}{}
+    
+    \begin{itemize}
+    \item Automates a headless browser to order food from the RIT dining hall
+    \item Allows users to order using HTTP requests instead of the using the command line.
+
+    
+    \end{itemize}
+
+\smallskip \smallskip
+  
+   \cvtag{Python} \cvtag{FastAPI} \cvtag{Imgur-API} 
+   \cvtag{Docker} \cvtag{OpenShift} \cvtag{Selenium}
+  \newline
+\divider
+    
+    \cvevent{Tiger Pay}{\cvrepo{|\faGithub  Bobbykdhan/TigerPay}{https://github.com/Bobbykdhan/TigerPay} }{}{}
+    
+    \begin{itemize}
+    
+    \item Created a mobile app that allowed RIT students to onboard their Tiger Pay card on to their Apple Wallet
+    
+    \end{itemize}
+
+\smallskip \smallskip
+  
+  \cvtag{Swift} \cvtag{Python} \cvtag{FastAPI} \cvtag{MySQL} \cvtag{Beautiful Soup} \cvtag{ OpenShift}
+\smallskip \smallskip
+       
+ 
+
+    % ----- PROJECTS -----
+    
+    \switchcolumn
+    \smallskip
+    
+    % ----- EXTRACURRICULARS -----
+    \cvsection{Activities}
+
+    \cvevent{Computer Science House }{\cvrepo{|\newline \faGlobe csh.rit.edu}{https://csh.rit.edu}}{}{}
+    
+\begin{itemize}
+\item Media PC Admin - Maintains and improves the infrastructure of special rooms
+\item Special Interest Group of Computer Science, Computer Security and other technical students. 
+\item Weekly educational seminars and social events
+\end{itemize}
+
+   \cvsection{Awards}
+   
+   \cvevent{IBM Software Developer Badge }{\cvrepo{| \faGlobe Credly.com}{https://www.credly.com/badges/073dcee0-cdf9-4249-b8bf-f29e94eebcac/public_url}}{}{}
+    \smallskip 
+    
+Awarded to those who demonstrate a deep understanding and skills in the following programming competencies: 
+\begin{itemize}
+\item Data Structures and Algorithms 
+\item Front End and Back End Development Fundamentals
+\item Versioning
+\item Application Security
+\item Project Management
+\end{itemize}
+
+
+
+
+
+
+
+   
+    \end{paracol}
+    
+ 
+    
+    
+    
+    % ----- EXTRACURRICULARS -----
+\end{document}
