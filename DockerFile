@@ -1,13 +1,22 @@
+FROM docker.io/debian:bullseye AS builder
+
+RUN apt-get update -y && \
+    apt-get install -y texlive texlive-formats-extra make git
+
+WORKDIR /build/
+
+COPY . /build/
+
+RUN make
+
 FROM python:3.10-buster
 
 WORKDIR /app
 
-COPY requirements.txt .
-
-RUN pip install -r requirements.txt
+RUN pip install Flask==2.2.2
 
 COPY app.py .
 
-COPY Bobby_Dhanoolal_Resume.pdf .
+COPY --from=builder /build/Bobby_Dhanoolal_Resume.pdf Bobby_Dhanoolal_Resume.pdf
 
 ENTRYPOINT [ "flask", "run", "--host=0.0.0.0", "--port=8080"]
