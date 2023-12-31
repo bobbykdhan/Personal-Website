@@ -12,6 +12,7 @@ RUN pdflatex --interaction=nonstopmode main.tex; exit 0
 
 FROM python:3.10-buster AS flask
 
+EXPOSE 8080
 WORKDIR /app
 
 RUN pip install uvicorn==0.20.0 Flask==2.2.2 Werkzeug==2.2.2
