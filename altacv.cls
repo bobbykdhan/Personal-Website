@@ -279,6 +279,8 @@
     \columnratio{0.7}
     \begin{paracol}{2}
     {\fontsize{32}{40}\selectfont\color{name}\MakeUppercase{\@name}}
+    \medskip
+    {\taglinefont\color{tagline}\@tagline\par}
     \switchcolumn
     \begin{flushright}{\personalinfofont\@personalinfo\par}\end{flushright}
     \end{paracol}
