@@ -278,7 +278,7 @@
   \begingroup
     \columnratio{0.7}
     \begin{paracol}{2}
-    {\fontsize{32}{40}\selectfont\color{name}\MakeUppercase{\@name}}
+    {\fontsize{32}{40}\selectfont\color{name}\MakeUppercase{\@name}\par}
     \medskip
     {\taglinefont\color{tagline}\@tagline\par}
     \switchcolumn
