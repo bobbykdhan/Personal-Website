@@ -26,20 +26,21 @@
 \fi
 
 % ----- LIGHT MODE -----
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-\definecolor{PrimaryColor}{HTML}{05827c}
-\definecolor{SecondaryColor}{HTML}{050782}
-\definecolor{ThirdColor}{HTML}{b02e07}
-\definecolor{BackgroundColor}{HTML}{E2E2E2}
-\colorlet{name}{PrimaryColor}
-\colorlet{tagline}{PrimaryColor}
-\colorlet{heading}{PrimaryColor}
-\colorlet{headingrule}{ThirdColor}
-\colorlet{subheading}{SecondaryColor}
-\colorlet{accent}{SecondaryColor}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
+\definecolor{SlateGrey}{HTML}{2E2E2E} % Keep as is, good for emphasis
+\definecolor{LightGrey}{HTML}{666666} % Keep as is, good for body text
+\definecolor{PrimaryColor}{HTML}{008080} % Teal Blue for headings, links, icons
+\definecolor{SecondaryColor}{HTML}{9370DB} % Purple for dates, key skills, awards
+\definecolor{ThirdColor}{HTML}{B54745} % Light Gray for background or dividers
+\definecolor{BackgroundColor}{HTML}{FFFFFF} % White background 
+
+\colorlet{name}{PrimaryColor} % Teal Blue - Name
+\colorlet{tagline}{PrimaryColor} % Teal Blue - Tagline (if you have one)
+\colorlet{heading}{PrimaryColor} % Teal Blue - Headings (EDUCATION, EXPERIENCE, etc.)
+\colorlet{headingrule}{ThirdColor} % Light Gray - Heading rules/dividers
+\colorlet{subheading}{SecondaryColor} % Purple - Subheadings (within sections)
+\colorlet{accent}{SecondaryColor} % Purple - Dates, key skills, awards
+\colorlet{emphasis}{SlateGrey} % Slate Grey - Emphasized text
+\colorlet{body}{LightGrey} % Light Grey - Body text
 %\pagecolor{BackgroundColor}   
 % ----- DARK MODE -----
 %\definecolor{BackgroundColor}{HTML}{242424}
@@ -194,13 +195,10 @@
     
     \cvsection{Education}
         \cvevent{BS Computer Science}{|\cvrepo{Rochester Institute of Technology}{https://www.rit.edu/}}{2021-2025}{}
-    \cvtag{Concepts of Computing Systems} 
-    \cvtag{Intro to AI}
    \cvtag{Analysis of Algorithms}
-   \newline
     \cvtag{Machine Learning}
     \cvtag{Computer Vision} 
-    \cvtag{Independent Study in Machine Learning}
+    \newline
 
     % ----- EDUCATION -----
         
@@ -283,40 +281,41 @@ created Ontology.
     \smallskip
     
     \cvsection{Libraries}
-     \cvtag{ Pandas} \cvtag{ Numpy}  \cvtag{ Express}  \newline \cvtag{ Tensorflow} \cvtag{PyTorch}
+     \cvtag{ Pandas} \cvtag{ Numpy}  \cvtag{ Express}  \newline \cvtag{ Tensorflow} \cvtag{PyTorch} \cvtag{Asyncio}
       
     \bigskip
     \smallskip
     
     
     \cvsection{Technologies}
-     \cvtag{Square} \cvtag{Stripe}
-      \cvtag{Unreal Engine}
-    \cvtag{Unity Engine}
-    \cvtag{Web Automation}
+        
+            \cvtag{OpenShift}
      \cvtag{Docker}
-     \cvtag{OpenShift}
+     \cvtag{FastAPI}
+\cvtag{Flask}
+     \cvtag{Web Automation}
+     \newline
+     \cvtag{Stripe} \cvtag{Google Cloud} 
+
     
     \switchcolumn
 
     % ----- PROJECTS -----
     \cvsection{Projects}
-           \cvevent{Reinforcement Learning Study}{\cvrepo{|\faGithub  Bobbykdhan/RLStudy}{https://github.com/Bobbykdhan/RLStudy} }{}{}
+           \cvevent{Play Tracker}{|\faGithub Closed Source}{}
     
     \begin{itemize}
-    \item Researching Reinforcement Learning and Computer Vision in order to create an AI model capable of playing a rougelike platformer (Spelunky 2).
-
-    
+    \item Integrated Google Cloud services for real-time data retrieval and decision-making.
+    \item Built an asynchronous workflow with Python’s Asyncio to optimize trade execution speed.
     \end{itemize}
 
 \smallskip \smallskip
   
-   \cvtag{Python} \cvtag{Tensorflow} \cvtag{Open CV} 
-   \cvtag{Machine Learning} \cvtag{CUDA}
+   \cvtag{Python} \cvtag{IBKR API} \cvtag{Docker} \cvtag{Fast API} \cvtag{Google Cloud} \cvtag{Twilio} \cvtag{MySQL}
   \newline
   \divider
 
-       \cvevent{AutoOrder-API}{\cvrepo{|\faGithub  Bobbykdhan/AutoOrder-API}{https://github.com/Bobbykdhan/AutoOrder-API} }{}{}
+       \cvevent{AutoOrder-API}{\cvrepo{|\faGithub  Bobbykdhan/AutoOrder-API}{https://github.com/Bobbykdhan/AutoOrder-API}}{}{}
     
     \begin{itemize}
     \item Automated a headless browser to order food from the RIT dining hall.
@@ -359,11 +358,12 @@ created Ontology.
     % ----- EXTRACURRICULARS -----
     \cvsection{Activities}
 
-    \cvevent{Computer Science House }{\cvrepo{|\newline \faGlobe csh.rit.edu}{https://csh.rit.edu}}{}{}
+    \cvevent{Computer Science House - President}{\cvrepo{|\faGlobe csh.rit.edu}{https://csh.rit.edu}}{}{}
     
 \begin{itemize}
-\item President - Facilitate connections between our organization and outside companies 
-\item Special Interest Group of Computer Science, Computer Security and other technical students. 
+\item Facilitate connections between our organization and outside companies 
+\item Manage a professional organization of nearly 100 active members and a network of over 700 alumni
+\item Living Learning Community of Computer Science, Computer Security and other technical students. 
 \item Weekly educational seminars and social events
 \end{itemize}
 
