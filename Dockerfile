@@ -9,6 +9,8 @@ COPY . /build/
 
 RUN pdflatex --interaction=nonstopmode main.tex; exit 0
 
+RUN pdflatex --interaction=nonstopmode atsfriendly.tex; exit 0
+
 
 FROM python:3.10-buster AS flask
 
@@ -20,5 +22,7 @@ RUN pip install uvicorn==0.20.0 Flask==2.2.2 Werkzeug==2.2.2
 COPY app.py .
 
 COPY --from=builder /build/main.pdf Bobby_Dhanoolal_Resume.pdf
+
+COPY --from=builder /build/atsfriendly.pdf Bobby_Dhanoolal_Resume_ATS.pdf
 
 ENTRYPOINT ["python3", "app.py"]
