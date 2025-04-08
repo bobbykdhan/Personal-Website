@@ -25,4 +25,8 @@ out
 
 # OS
 .DS_Store
-Thumbs.db 
+Thumbs.db
+
+# Exclude unnecessary files
+README.md
+*.log 
