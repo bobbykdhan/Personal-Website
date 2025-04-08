@@ -1,103 +1,171 @@
-import Image from "next/image";
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(59,130,246,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(99,102,241,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(168,85,247,0.1),transparent_50%)]" />
+        
+        {/* Decorative Circles */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="max-w-5xl mx-auto px-4 relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            {/* Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="w-64 h-64 md:w-80 md:h-80 relative rounded-full overflow-hidden border-4 border-white shadow-xl"
+            >
+              <Image
+                src="/images/profile.png"
+                alt="Bobby Dhanoolal"
+                fill
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+
+            {/* Introduction Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center md:text-left flex-1"
+            >
+              <h1 className="text-5xl font-bold text-gray-900 mb-6">
+                Hi, I'm <span className="text-blue-600">Bobby Dhanoolal</span>
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 max-w-2xl">
+                A Computer Science student at RIT passionate about backend development, 
+                AI, and automation. Currently seeking a full-time position in backend 
+                development for 2025.
+              </p>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4">
+                <Link
+                  href="/projects"
+                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  View My Work
+                </Link>
+                <Link
+                  href="/about"
+                  className="px-6 py-3 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  About Me
+                </Link>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Featured Projects Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl font-bold text-gray-900 mb-12 text-center"
+          >
+            Featured Projects
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow"
+            >
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">Play Tracker</h3>
+              <p className="text-gray-600 mb-6">
+                Integrated Google Cloud services for real-time data retrieval and decision-making. 
+                Built an asynchronous workflow with Python's Asyncio to optimize trade execution speed.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Python', 'IBKR API', 'Docker', 'Fast API', 'Google Cloud', 'Twilio', 'MySQL'].map((tag, index) => (
+                  <span key={index} className="px-4 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <Link
+                href="/projects"
+                className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center group"
+              >
+                Learn More
+                <svg
+                  className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow"
+            >
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">SummerSync</h3>
+              <p className="text-gray-600 mb-6">
+                Led a team to develop an automated scheduling algorithm for the RIT NTID summer transition program, 
+                integrating student ability levels with teacher and room availability to optimize placements.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['Python', 'FastAPI', 'MySQL', 'OpenShift'].map((tag, index) => (
+                  <span key={index} className="px-4 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <Link
+                href="/projects"
+                className="text-blue-600 hover:text-blue-700 font-medium inline-flex items-center group"
+              >
+                Learn More
+                <svg
+                  className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
