@@ -2,17 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export default function Navigation() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -97,66 +92,63 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Menu */}
-        {mounted && (
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="md:hidden"
-              >
-                <div className="py-4 space-y-4">
-                  <Link
-                    href="/"
-                    className={`block px-4 py-2 rounded-md ${
-                      isActive('/')
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50'
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Home
-                  </Link>
-                  <Link
-                    href="/about"
-                    className={`block px-4 py-2 rounded-md ${
-                      isActive('/about')
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50'
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    About
-                  </Link>
-                  <Link
-                    href="/projects"
-                    className={`block px-4 py-2 rounded-md ${
-                      isActive('/projects')
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50'
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Projects
-                  </Link>
-                  <Link
-                    href="/resume"
-                    className={`block px-4 py-2 rounded-md ${
-                      isActive('/resume')
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-50'
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Resume
-                  </Link>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        )}
+        <motion.div
+          initial={false}
+          animate={isMobileMenuOpen ? 'open' : 'closed'}
+          variants={{
+            open: { opacity: 1, height: 'auto' },
+            closed: { opacity: 0, height: 0 }
+          }}
+          transition={{ duration: 0.3 }}
+          className="md:hidden overflow-hidden"
+        >
+          <div className="py-4 space-y-4">
+            <Link
+              href="/"
+              className={`block px-4 py-2 rounded-md ${
+                isActive('/')
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              className={`block px-4 py-2 rounded-md ${
+                isActive('/about')
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              href="/projects"
+              className={`block px-4 py-2 rounded-md ${
+                isActive('/projects')
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Projects
+            </Link>
+            <Link
+              href="/resume"
+              className={`block px-4 py-2 rounded-md ${
+                isActive('/resume')
+                  ? 'bg-blue-50 text-blue-600'
+                  : 'text-gray-600 hover:bg-gray-50'
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Resume
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </nav>
   );

@@ -5,10 +5,10 @@ import { motion } from 'framer-motion';
 
 export default function Resume() {
   const [viewMode, setViewMode] = useState<'ats' | 'fancy'>('fancy');
-  const [mounted, setMounted] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    setIsClient(true);
   }, []);
 
   return (
@@ -47,20 +47,24 @@ export default function Resume() {
           </div>
         </motion.div>
 
-        {mounted && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white rounded-xl shadow-lg overflow-hidden"
-          >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="bg-white rounded-xl shadow-lg overflow-hidden"
+        >
+          {isClient ? (
             <iframe
               src={viewMode === 'fancy' ? '/resume-fancy.pdf' : '/resume.pdf'}
               className="w-full h-[calc(100vh-12rem)]"
               title="Resume PDF Viewer"
             />
-          </motion.div>
-        )}
+          ) : (
+            <div className="w-full h-[calc(100vh-12rem)] flex items-center justify-center bg-gray-50">
+              <div className="animate-pulse text-gray-400">Loading PDF...</div>
+            </div>
+          )}
+        </motion.div>
       </div>
     </div>
   );
