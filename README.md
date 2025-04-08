@@ -1,9 +1,9 @@
-# Resume
+# Personal Website
 
 
-A repo for my resume hosted on OKD at [bobbyd.cs.house](https://bobbyd.cs.house).
+A repo for my personal hosted on OpenShift at [bobbyd.cs.house](https://bobbyd.cs.house).
 
-The pretty version of my resume is available at the [bobbyd.cs.house/fancy](https://bobbyd.cs.house/fancy).
+My resume is available at [bobbyd.cs.house/bobby_dhanoolal_resume_fancy.pdf](https://bobbyd.cs.house/bobby_dhanoolal_resume_fancy.pdf).
 
 
 Also includes the source code for the resume built in LaTeX.
