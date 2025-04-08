@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  images: {
-    unoptimized: true,
+  experimental: {
+    serverActions: true,
   },
+  server: {
+    port: 8080,
+    host: '0.0.0.0'
+  }
 }
 
 module.exports = nextConfig 

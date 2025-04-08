@@ -1,45 +1,55 @@
-FROM docker.io/debian:bullseye AS builder
+FROM node:18-alpine AS base
 
-RUN apt-get update -y && \
-    apt-get install -y texlive texlive-formats-extra make git texlive-fonts-extra texlive-bibtex-extra wget
-
-# Install altacv package
-WORKDIR /usr/local/share/texmf/tex/latex/
-RUN wget https://github.com/liantze/AltaCV/archive/refs/heads/main.zip && \
-    unzip main.zip && \
-    mv AltaCV-main/altacv . && \
-    rm -rf AltaCV-main main.zip && \
-    mktexlsr
-
-WORKDIR /build/
-
-COPY . /build/
-
-RUN pdflatex --interaction=nonstopmode src/assets/resume/fancyresume.tex; exit 0
-RUN pdflatex --interaction=nonstopmode src/assets/resume/atsresume.tex; exit 0
-
-FROM node:18-alpine
-
+# Install dependencies only when needed
+FROM base AS deps
 WORKDIR /app
 
-# Copy package files
+# Install additional dependencies
+RUN apk add --no-cache libc6-compat
+
+# Copy package files first for better caching
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install dependencies with exact versions
+RUN npm install autoprefixer@10.4.14 postcss@8.4.27 tailwindcss@3.3.3
+RUN npm ci
 
-# Copy source files
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+
+# Copy dependencies first
+COPY --from=deps /app/node_modules ./node_modules
+COPY package*.json ./
+
+# Copy source code and config files
 COPY . .
 
-# Copy compiled PDFs
-COPY --from=builder /build/src/assets/resume/fancyresume.pdf ./public/fancyresume.pdf
-COPY --from=builder /build/src/assets/resume/atsresume.pdf ./public/atsresume.pdf
+# Set build-time variables
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=8080
+ENV NODE_ENV=production
 
-# Build Next.js application
+# Build the application
 RUN npm run build
 
-# Expose port
-EXPOSE 3000
+# Production image, copy all the files and run next
+FROM base AS runner
+WORKDIR /app
 
-# Start the application
-CMD ["npm", "start"]
+# Set runtime environment variables
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=8080
+ENV HOSTNAME="0.0.0.0"
+
+# Copy only necessary files
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/.next/standalone ./
+
+EXPOSE 8080
+
+CMD ["node", "server.js", "--port", "8080"]
