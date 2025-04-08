@@ -29,7 +29,7 @@ COPY --from=builder /app/.next/static ./.next/static
 
 # Set environment variables
 ENV NODE_ENV=production
-ENV PORT=80
+ENV PORT=3000
 
 # Expose the port
 EXPOSE 80

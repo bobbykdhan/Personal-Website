@@ -46,7 +46,7 @@ export default function Home() {
               className="text-center md:text-left flex-1"
             >
               <h1 className="text-5xl font-bold text-gray-900 mb-6">
-                Hi, I'm <span className="text-blue-600">Bobby Dhanoolal</span>
+                Hi, I&apos;m <span className="text-blue-600">Bobby Dhanoolal</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-2xl">
                 A Computer Science student at RIT passionate about backend development, 
@@ -93,7 +93,7 @@ export default function Home() {
               <h3 className="text-2xl font-semibold text-gray-900 mb-4">Play Tracker</h3>
               <p className="text-gray-600 mb-6">
                 Integrated Google Cloud services for real-time data retrieval and decision-making. 
-                Built an asynchronous workflow with Python's Asyncio to optimize trade execution speed.
+                Built an asynchronous workflow with Python&apos;s Asyncio to optimize trade execution speed.
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
                 {['Python', 'IBKR API', 'Docker', 'Fast API', 'Google Cloud', 'Twilio', 'MySQL'].map((tag, index) => (

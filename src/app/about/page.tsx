@@ -26,7 +26,7 @@ export default function About() {
           <p className="text-gray-600 leading-relaxed">
             I am a Computer Science student at Rochester Institute of Technology (RIT) with a passion for backend development, 
             AI, and automation. My journey in technology has been driven by a desire to create efficient, scalable solutions 
-            that solve real-world problems. Through my internships and projects, I've gained hands-on experience in developing 
+            that solve real-world problems. Through my internships and projects, I&apos;ve gained hands-on experience in developing 
             robust backend systems, implementing AI solutions, and automating complex workflows.
           </p>
         </motion.section>
