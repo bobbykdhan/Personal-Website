@@ -26,13 +26,14 @@ COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/ ./
 
 # Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
 
 # Expose the port
-EXPOSE 80
+EXPOSE 3000
 
 # Start the application
 CMD ["node", "server.js"]

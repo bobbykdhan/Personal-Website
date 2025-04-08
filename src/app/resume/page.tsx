@@ -1,61 +1,67 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
-export default function ResumePage() {
+export default function Resume() {
+  const [viewMode, setViewMode] = useState<'ats' | 'fancy'>('fancy');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-4xl mx-auto"
-      >
-        <h1 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
-          My Resume
-        </h1>
+    <div className="min-h-screen py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+      <div className="max-w-5xl mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-8 flex justify-between items-center"
+        >
+          <h1 className="text-4xl font-bold text-gray-900">Resume</h1>
+          <div className="flex gap-4 items-center">
+            <div className="flex gap-4">
+              <button
+                onClick={() => setViewMode('fancy')}
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  viewMode === 'fancy'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                Fancy Version
+              </button>
+              <button
+                onClick={() => setViewMode('ats')}
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  viewMode === 'ats'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                ATS Version
+              </button>
+            </div>
+          </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* ATS-Friendly Resume */}
+        {mounted && (
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="bg-gray-800 rounded-lg p-6 shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="bg-white rounded-xl shadow-lg overflow-hidden"
           >
-            <h2 className="text-2xl font-semibold text-white mb-4">ATS-Friendly Resume</h2>
-            <p className="text-gray-300 mb-6">
-              A clean, simple version optimized for applicant tracking systems. Perfect for job applications
-              and professional submissions.
-            </p>
-            <Link
-              href="/resume-ats.pdf"
-              target="_blank"
-              className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white font-medium hover:from-blue-600 hover:to-blue-800 transition-all duration-200"
-            >
-              View ATS Resume
-            </Link>
+            <iframe
+              src={viewMode === 'fancy' ? '/resume-fancy.pdf' : '/resume.pdf'}
+              className="w-full h-[calc(100vh-12rem)]"
+              title="Resume PDF Viewer"
+            />
           </motion.div>
-
-          {/* Fancy Resume */}
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="bg-gray-800 rounded-lg p-6 shadow-lg"
-          >
-            <h2 className="text-2xl font-semibold text-white mb-4">Fancy Resume</h2>
-            <p className="text-gray-300 mb-6">
-              A visually enhanced version with modern design elements. Great for sharing directly
-              with hiring managers and networking.
-            </p>
-            <Link
-              href="/resume-fancy.pdf"
-              target="_blank"
-              className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-purple-700 text-white font-medium hover:from-purple-600 hover:to-purple-800 transition-all duration-200"
-            >
-              View Fancy Resume
-            </Link>
-          </motion.div>
-        </div>
-      </motion.div>
+        )}
+      </div>
     </div>
   );
 } 
