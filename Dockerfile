@@ -27,10 +27,8 @@ COPY . .
 RUN pdflatex -interaction=nonstopmode ./resume-fancy.tex; exit 0
 RUN pdflatex -interaction=nonstopmode ./resume.tex; exit 0
 
-# Create public directory and copy PDFs
-# RUN mkdir -p public
-RUN cp resume.pdf ./public/resume.pdf
-RUN cp resume-fancy.pdf ./public/resume-fancy.pdf
+RUN cp resume.pdf ./public/bobby_dhanoolal_resume.pdf
+RUN cp resume-fancy.pdf ./public/bobby_dhanoolal_resume_fancy.pdf
 
 # Build the Next.js app
 RUN npm run build
