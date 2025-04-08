@@ -27,9 +27,6 @@ COPY . .
 RUN pdflatex -interaction=nonstopmode ./resume-fancy.tex; exit 0
 RUN pdflatex -interaction=nonstopmode ./resume.tex; exit 0
 
-RUN cp resume.pdf ./public/bobby_dhanoolal_resume.pdf
-RUN cp resume-fancy.pdf ./public/bobby_dhanoolal_resume_fancy.pdf
-
 # Build the Next.js app
 RUN npm run build
 
@@ -45,6 +42,10 @@ COPY --from=builder /app/next.config.js ./
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+
+# Copy PDFs from builder root to public directory
+COPY --from=builder /app/resume.pdf ./public/bobby_dhanoolal_resume.pdf
+COPY --from=builder /app/resume-fancy.pdf ./public/bobby_dhanoolal_resume_fancy.pdf
 
 # Environment config
 ENV NODE_ENV=production
