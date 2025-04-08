@@ -9,14 +9,14 @@ const projects = [
     description: 'Integrated Google Cloud services for real-time data retrieval and decision-making. Built an asynchronous workflow with Python\'s Asyncio to optimize trade execution speed.',
     tags: ['Python', 'IBKR API', 'Docker', 'Fast API', 'Google Cloud', 'Twilio', 'MySQL'],
     status: 'Closed Source',
-    date: '2024'
+    date: '2025'
   },
   {
     title: 'SummerSync',
     description: 'Led a team to develop an automated scheduling algorithm for the RIT NTID summer transition program, integrating student ability levels with teacher and room availability to optimize placements.',
     tags: ['Python', 'FastAPI', 'MySQL', 'OpenShift'],
     status: 'Closed Source',
-    date: '2024'
+    date: '2025'
   },
   {
     title: 'AutoOrder-API',
