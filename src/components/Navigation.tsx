@@ -60,6 +60,16 @@ export default function Navigation() {
             >
               Projects
             </Link>
+            <Link
+              href="/resume"
+              className={`${
+                isActive('/resume')
+                  ? 'text-blue-600'
+                  : 'text-gray-600 hover:text-gray-800'
+              } transition-colors`}
+            >
+              Resume
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -124,6 +134,17 @@ export default function Navigation() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Projects
+                </Link>
+                <Link
+                  href="/resume"
+                  className={`block px-4 py-2 rounded-md ${
+                    isActive('/resume')
+                      ? 'bg-blue-50 text-blue-600'
+                      : 'text-gray-600 hover:bg-gray-50'
+                  }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Resume
                 </Link>
               </div>
             </motion.div>

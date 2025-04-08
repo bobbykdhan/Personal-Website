@@ -1,0 +1,190 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\geometry{
+  top=.5in,
+  left=1.25in,
+  right=.5in,
+  bottom=.5in,
+}
+\usepackage{changepage}
+
+\newlength{\marginlen}
+\newlength{\marginsep}
+\newlength{\barlen}
+\setlength{\marginlen}{0.75in}
+\setlength{\marginsep}{0.05in}
+\addtolength{\barlen}{\marginlen}
+\addtolength{\barlen}{-\marginsep}
+
+
+\usepackage[HTML]{xcolor}
+\definecolor{barColor}{HTML}{05827c}
+
+\usepackage{titlesec}
+\titleformat{\section}%
+	{\Large}{}% no label
+	{0pt}%
+	{% The bar styling
+		\color{barColor}%
+		\hspace*{-\marginlen}%
+		\raise0.25ex\hbox{\rule{\barlen}{1ex}}\hspace{\marginsep}%
+	}
+\setcounter{secnumdepth}{0} % no section numbering
+\titlespacing*{\section}{0pt}{0.5ex}{0.5ex}
+
+\pagestyle{empty}
+
+\usepackage{ebgaramond}
+\usepackage{enumitem}
+\setlist[itemize]{left=0pt, nosep, before=\small, after=\normalsize, topsep=2pt}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks, allcolors=black}
+
+\makeatletter
+\newcommand{\email}[1]{\gdef\@email{#1}}
+\newcommand{\objective}[1]{\gdef\@objective{#1}}
+\newcommand{\linkedin}[1]{\gdef\@linkedin{#1}}
+\newcommand{\github}[1]{\gdef\@github{#1}}
+\newcommand{\phone}[1]{\gdef\@phone{#1}}
+
+\renewcommand{\maketitle}{
+    \begin{adjustwidth}{-\marginlen}{0pt}
+        \begin{tabular}{@{} p{0.5\linewidth} @{} p{0.5\linewidth} @{} }
+        {
+            \fontsize{36}{56}\selectfont \@title 
+            \newline
+            \fontsize{16}{0}\selectfont \@objective   
+        }
+        &    
+        \parbox{\linewidth}{%
+            \raggedleft\large%
+            \href{mailto:\@email}{\@email}\par%
+            \href{https://\@github}{\@github}\par%
+            \href{https://linkedin.com/\@linkedin}{\@linkedin}\par%
+            \href{tel:\@phone}{\@phone}\par%
+        }
+        \end{tabular}
+    \end{adjustwidth}
+}
+\makeatother
+
+\setlength{\parindent}{0pt}
+
+\newcommand{\accentcolor}{blue!50!black!100!white}
+
+\title{Bobby Dhanoolal}
+\objective{Seeking 2025 Full Time Position in Backend}
+\email{bobbydhanoolal@mail.rit.edu}
+\linkedin{in/bobby-dhanoolal}
+\github{github.com/bobbykdhan}
+\phone{914 409-7471}
+
+\reversemarginpar
+\newcommand{\mpar}[1]{\leavevmode\marginpar{\raggedleft #1}}
+
+\begin{document}
+\maketitle
+
+\section{Experience}
+
+\mpar{May 2024 --\par Aug 2024}
+\textbf{Software Engineer Intern - AI and Automation}, \emph{IBM}
+\begin{itemize}
+  \item Researched and developed a process to evaluate large language models using AI-created Ontology.
+  \item Met with team members to coordinate data analysis to extract information from an IT product's documentation.
+  \item \textit{Technologies: Python, SpaCy, Pandas, Numpy, PyTorch.}
+\end{itemize}
+
+\smallskip
+
+\mpar{May 2023 --\par Dec 2023}
+\textbf{Software Engineering Co Op}, \emph{Codonics}
+\begin{itemize}
+  \item Investigated and repaired issues regarding the Safe Label System and its Administration Tool.
+  \item Coordinated with team members to execute a comprehensive testing workflow aimed at preventing production bugs.
+  \item Implemented WiFi 6 technology, resulting in substantial improvements in connectivity speeds and reliability. Proactively managed drivers across diverse adapters.
+  \item \textit{Technologies: Java, Bash, Linux, Jenkins, Groovy, C, JavaScript, HTML, Spring.}
+\end{itemize}
+
+\smallskip
+
+\mpar{Jan 2022 --\par Dec 2022}
+\textbf{Web \& Email Technologist}, \emph{RIT Univ. Advancement}
+\begin{itemize}
+  \item Created and updated content on the university's Alumni websites using Drupal.
+  \item Collaborated with team members using Airtable and Blackbaud to create and process communication emails and email lists.
+  \item \textit{Technologies: Drupal, HTML, CSS, Blackbaud, Airtable.}
+\end{itemize}
+
+\section{Projects}
+\mpar{Feb 2022 --\par Present}
+\textbf{Play Tracker, Closed Source}
+\begin{itemize}
+  \item Integrated Google Cloud services for real-time data retrieval and decision-making.
+  \item Built an asynchronous workflow with Python’s Asyncio to optimize trade execution speed.
+  \item \textit{Technologies: Python, IBKR API, Docker, Fast API, Google Cloud, Twilio, MySQL.}
+\end{itemize}
+
+\smallskip
+\mpar{Mar 2025 --\par Present}
+\textbf{SummerSync, Closed Source}
+\begin{itemize}
+  \item Led a team to develop an automated scheduling algorithm for the RIT NTID summer transition program, integrating student ability levels with teacher and room availability to optimize placements and reduce conflicts.
+  \item \textit{Technologies: Python, FastAPI, MySQL, OpenShift.}
+\end{itemize}
+
+
+\smallskip
+\mpar{Jan 2022 --\par May 2023}
+\textbf{AutoOrder-API, \href{https://github.com/Bobbykdhan/AutoOrder-API}{Bobbykdhan/AutoOrder-API}}
+\begin{itemize}
+  \item Automated a headless browser to order food from the RIT dining hall.
+  \item Enabled users to order using HTTP requests instead of via the command line.
+  \item \textit{Technologies: Python, FastAPI, Imgur-API, Docker, OpenShift, Selenium.}
+\end{itemize}
+
+
+\section{Skills}
+
+\mpar{Languages} Python, Java, C, JavaScript, Swift, CSS, Apple Script, Bash, LaTeX, MySQL, Assembly, MIPS, HTML
+
+\smallskip
+
+\mpar{Frameworks} React, Drupal, Selenium, React Native, Playwright
+
+\smallskip
+
+\mpar{Libraries} Pandas, Numpy, Express, Tensorflow, PyTorch, Asyncio
+
+\smallskip
+
+\mpar{Technologies} Google Cloud, OpenShift, Docker, FastAPI, Flask, Web Automation, Stripe,
+
+\section{Education}
+\mpar{Sep 2021 --\par May 2025}
+\textbf{Rochester Institute of Technology, Rochester, NY} \\
+B.S. Computer Science \\
+Courses: Large Language Models, Programming Language Concepts, Analysis of Algorithms, Machine Learning, \\
+Computer Vision
+
+\section{Extracurriculars \& Leadership}
+\mpar{Sep 2021 --\par May 2025}
+\textbf{Computer Science House - President}, \emph{csh.rit.edu}
+\begin{itemize}
+  \item Facilitated connections between the organization and outside companies.
+  \item Managed a professional organization of nearly 100 active members and a network of over 700 alumni.
+  \item Part of a Living Learning Community of Computer Science, Computer Security, and other technical students.
+  \item Organized weekly educational seminars and social events.
+\end{itemize}
+
+\smallskip
+\mpar{Sep 2022 --\par May 2025}
+\textbf{National Society of Black Engineers - Member}, \emph{nsbe.org}
+\begin{itemize}
+  \item Participated in weekly chapter meetings and social events.
+\end{itemize}
+
+\end{document}
