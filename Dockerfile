@@ -23,10 +23,12 @@ RUN npm ci
 # Copy the rest of the application
 COPY . .
 
+WORKDIR /app/resume_files
 # Compile PDFs first
 RUN pdflatex -interaction=nonstopmode ./resume-fancy.tex; exit 0
 RUN pdflatex -interaction=nonstopmode ./resume.tex; exit 0
 
+WORKDIR /app
 # Build the Next.js app
 RUN npm run build
 
@@ -44,8 +46,8 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
 # Copy PDFs from builder root to public directory
-COPY --from=builder /app/resume.pdf ./public/bobby_dhanoolal_resume.pdf
-COPY --from=builder /app/resume-fancy.pdf ./public/bobby_dhanoolal_resume_fancy.pdf
+COPY --from=builder /app/resume_files/resume.pdf ./public/bobby_dhanoolal_resume.pdf
+COPY --from=builder /app/resume_files/resume-fancy.pdf ./public/bobby_dhanoolal_resume_fancy.pdf
 
 # Environment config
 ENV NODE_ENV=production
