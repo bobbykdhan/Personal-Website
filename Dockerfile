@@ -1,28 +1,56 @@
-FROM docker.io/debian:bullseye AS builder
+# --------------------
+# Build Stage
+# --------------------
+FROM node:20-bullseye-slim AS builder
 
+# Install LaTeX and other dependencies
 RUN apt-get update -y && \
-    apt-get install -y texlive texlive-formats-extra make git texlive-fonts-extra texlive-bibtex-extra
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    texlive \
+    texlive-formats-extra \
+    texlive-fonts-extra \
+    texlive-bibtex-extra \
+    make \
+    git \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /build/
-
-COPY . /build/
-
-RUN pdflatex --interaction=nonstopmode main.tex; exit 0
-
-RUN pdflatex --interaction=nonstopmode atsfriendly.tex; exit 0
-
-
-FROM python:3.10-buster AS flask
-
-EXPOSE 8080
 WORKDIR /app
 
-RUN pip install uvicorn==0.20.0 Flask==2.2.2 Werkzeug==2.2.2
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm ci
 
-COPY app.py .
+# Copy the rest of the application
+COPY . .
 
-COPY --from=builder /build/main.pdf Bobby_Dhanoolal_Resume.pdf
+# Compile PDFs first
+RUN pdflatex -interaction=nonstopmode ./resume-fancy.tex; exit 0
+RUN pdflatex -interaction=nonstopmode ./resume.tex; exit 0
 
-COPY --from=builder /build/atsfriendly.pdf Bobby_Dhanoolal_Resume_ATS.pdf
+# Build the Next.js app
+RUN npm run build
 
-ENTRYPOINT ["python3", "app.py"]
+# --------------------
+# Production Stage
+# --------------------
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+
+# Copy necessary files from the builder
+COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+# Copy PDFs from builder root to public directory
+COPY --from=builder /app/resume.pdf ./public/bobby_dhanoolal_resume.pdf
+COPY --from=builder /app/resume-fancy.pdf ./public/bobby_dhanoolal_resume_fancy.pdf
+
+# Environment config
+ENV NODE_ENV=production
+ENV PORT=8080
+
+EXPOSE 8080
+
+CMD ["node", "server.js"]

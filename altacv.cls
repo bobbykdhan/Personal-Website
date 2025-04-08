@@ -309,7 +309,8 @@
   \ifstrequal{#2}{}{}{\large{\color{accent}#2}}
   \medskip\normalsize
   \ifstrequal{#3}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faCalendar\color{emphasis}~#3}}}
-
+  \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faMapMarker\color{emphasis}~#4}}}\par
+  \medskip\normalsize
 }
 
 \newcommand{\cvachievement}[3]{%
