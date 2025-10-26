@@ -49,9 +49,7 @@ export default function Home() {
                 Hi, I&apos;m <span className="text-blue-600">Bobby Dhanoolal</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-2xl">
-                A Computer Science student at RIT passionate about backend development, 
-                AI, and automation. Currently seeking a full-time position in backend 
-                development for 2025.
+                A computer science graduate from Rochester Institute of Technology, passionate about backend development, AI, and automation.
               </p>
               <div className="flex flex-wrap justify-center md:justify-start gap-4">
                 <Link
