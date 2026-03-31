@@ -22,19 +22,20 @@ jobs:
 
       - name: Install Tectonic
         run: |
-          curl -fsSL https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%400.15.0/tectonic-0.15.0-x86_64-unknown-linux-musl.tar.gz \
-            | tar xzf - -C /tmp || true
-          chmod +x /tmp/tectonic || true
+          sudo apt-get update -y
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            texlive \
+            texlive-formats-extra \
+            texlive-fonts-extra \
+            texlive-bibtex-extra \
+            make \
+            git
 
       - name: Compile resume PDFs
         run: |
           cd resume_files
-          if [ -x /tmp/tectonic ]; then
-            /tmp/tectonic resume-fancy.tex || true
-            /tmp/tectonic resume.tex || true
-          else
-            echo "Tectonic binary missing; skipping compile"
-          fi
+          pdflatex -interaction=nonstopmode ./resume-fancy.tex || true
+          pdflatex -interaction=nonstopmode ./resume.tex || true
 
       - name: Copy generated PDFs to public
         run: |
